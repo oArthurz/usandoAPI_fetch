@@ -3,18 +3,17 @@ document.addEventListener('DOMContentLoaded', function()
     const avatar = document.querySelector('.profile-avatar')
     const nome = document.querySelector('.profile-name')
     const username = document.querySelector('.profile-username')
-    const repositorio = document.querySelector('.repositorios')
-    const seguindo = document.querySelector('.seguindo')
+    const repositorios = document.querySelector('.repositorios')
     const seguidores = document.querySelector('.seguidores')
-    const botao = document.querySelector('.profile-link') 
+    const seguindo = document.querySelector('.seguindo')
+    const link = document.querySelector('.profile-link')
 
-    const link = 'https://api.github.com/users/oArthurz'
+    const url = 'https://api.github.com/users/oArthurz'
 
-    fetch(link).then(function(resposta)
+    fetch(url).then(function(resposta)
     {
         return resposta.json()
     })
-
     .then(function(json)
     {
         console.log(json)
@@ -22,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function()
         avatar.src = json.avatar_url
         nome.innerText = json.name
         username.innerText = json.login
-        repositorio.innerText = json.public_repos
-        seguindo.innerText = json.following
+        repositorios.innerText = json.public_repos
         seguidores.innerText = json.followers
-        botao.href = json.html_url
+        seguindo.innerText = json.following
+        link.href = json.html_url
     })
 })
